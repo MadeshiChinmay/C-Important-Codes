@@ -1,0 +1,65 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<set>
+#include<cmath>
+#include<unordered_set>
+#include<map>
+#include<cstring>
+#include<utility>
+#include<string>
+#include<iomanip>
+#include<unordered_map>
+using namespace std;
+#define int unsigned long long
+#define pb push_back
+#define ppb pop_back
+#define fr(i,n) for(int i=0;i<n;i++)
+#define F first
+#define S second
+#define LM LONG_MAX
+#define LS LONG_MIN
+#define cfM 998244353
+#define ccM 1000000007
+#define fastio ios_base::sync_with_stdio(false);cin.tie(0)
+#define inf 10000000000000000
+#define sp setprecision(9)
+float pi=3.14159265;
+int max(int b,int a)
+{if(b>a)return b;else return a;}
+int min(int b,int a)
+{if(b<a)return b;else return a;}
+int ab(int b)
+{if(b<0) return (-1*b);else return(b);}
+void print(vector<int>&v)
+{
+	for(int i=0;i<v.size();i++)
+		cout<<v[i]<<" ";
+	cout<<endl;}
+void print(int arr[],int n)
+{
+	for(int i=0;i<n;i++)
+		cout<<arr[i]<<" ";}
+int32_t main()
+{
+	string s,t;
+	cin>>s>>t;
+	int dp[s.length()+1][t.length()+1];
+	memset(dp,0,sizeof(dp));
+	for(int i=1;i<t.length()+1;i++)
+		dp[0][i]=dp[0][i-1]+1;//insertion
+	for(int j=1;j<s.length()+1;++j)
+		dp[j][0]=dp[j-1][0]+1;
+	for(int i=1;i<=s.length();i++)
+	{
+		for(int j=1;j<=t.length();j++)
+		{
+			int q1=dp[i-1][j-1];
+			int q2=dp[i][j-1];
+			int q3=dp[i-1][j];
+			dp[i][j]=min(q1,min(q2,q3))+(s[i-1]!=t[j-1]);
+		}
+	}
+	cout<<dp[s.length()][t.length()]<<endl;
+
+}
