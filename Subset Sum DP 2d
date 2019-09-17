@@ -1,0 +1,102 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<set>
+#include<cmath>
+#include<unordered_set>
+#include<map>
+#include<cstring>
+#include<utility>
+#include<queue>
+#include<string>
+#include<iomanip>
+#include<unordered_map>
+using namespace std;
+#define int long long
+#define pb push_back
+#define ppb pop_back
+#define fr(i,n) for(int i=0;i<n;i++)
+#define F first
+#define S second
+#define LM LONG_MAX
+#define LS LONG_MIN
+#define cfM 998244353
+#define ccM 1000000007
+#define fastio ios_base::sync_with_stdio(false);cin.tie(0)
+#define inf 10000000000000000
+#define sp setprecision(9)
+float pi=3.14159265;
+int max(int b,int a)
+{if(b>a)return b;else return a;}
+int min(int b,int a)
+{if(b<a)return b;else return a;}
+int ab(int b)
+{if(b<0) return (-1*b);else return(b);}
+void print(vector<pair<int,int> >&v)
+{
+	fr(i,v.size())
+	cout<<v[i].F<<" "<<v[i].S<<endl;
+	cout<<endl;
+}
+void print(int arr[],int n)
+{
+	for(int i=0;i<n;i++)
+		cout<<arr[i]<<" ";}
+int32_t main()
+{
+	int n;
+	cin>>n;
+	int sum;
+	cin>>sum;
+	int arr[n];
+	for(int i=0;i<n;i++)cin>>arr[i];
+	int dp[n][sum+1];
+	memset(dp,0,sizeof(dp));
+	//BASE CASE
+	for(int i=0;i<n;i++)
+	{
+		dp[i][0]=1;
+	}
+	//ANOTHER BASE CASE
+	for(int j=0;j<=sum;j++)
+	{
+		if(j==arr[0])
+			dp[0][j]=1;
+		else
+			dp[0][j]=0;
+	}
+	for(int i=1;i<n;i++)
+	{
+		for(int j=1;j<=sum;j++)
+		{
+			if(arr[i]>j)
+			{
+				dp[i][j]=0;
+			}
+			if(arr[i]==j)
+			{
+				dp[i][j]=1;
+			}
+			if(dp[i-1][j])
+			{
+				dp[i][j]=1;
+			}
+			if(arr[i]<j)
+			{
+				if(dp[i-1][j-arr[i]])
+				{
+					dp[i][j]=1;
+				}
+			}
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<=sum;j++)
+		{
+			cout<<dp[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	//if the bottom right element is set therefore the subset with given sum is found.
+}
