@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+
+using namespace __gnu_pbds;
+using namespace std;
+
+#define sint int32_t
+#define int long long int
+#define all(v) v.begin() , v.end()
+#define vii vector<int>
+#define pb push_back
+#define pii pair<int,int>
+#define F first
+#define S second
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+
+
+void solve()
+{
+    // Kosaraju's Algorithm
+    /*1. Perform DFS and store them in topological form.
+    2. Reverse the edges and form the transpose graph.
+    3. Empty the stack from top to bottom and perform dfs on the stack.top()
+        and just pop it and mark visited.
+    4. If an element is already visited and is inside the stack then just pop it out.
+    5. Just print the elements for each SCC.*/
+
+}
+
+
+int32_t main()
+{   fastio;
+
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+
+
+}
