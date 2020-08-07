@@ -73,7 +73,7 @@ int32_t main()
     {
         string s;
         cin>>s;
-        cout<<query<<endl;
+        cout<<query(s)<<endl;
     }
 
 
